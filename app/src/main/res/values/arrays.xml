@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="tags">
+        <item>@string/tag_grocery</item>
+        <item>@string/tag_movies</item>
+        <item>@string/tag_personal</item>
+        <item>@string/tag_receipts</item>
+        <item>@string/tag_recipes</item>
+        <item>@string/tag_restaurant</item>
+        <item>@string/tag_todo</item>
+        <item>@string/tag_travel</item>
+        <item>@string/tag_misc</item>
+    </string-array>
+
+    <string-array name="add_picture_options">
+        <item>@string/action_choose_image</item>
+        <item>@string/action_take_photo</item>
+    </string-array>
+</resources>

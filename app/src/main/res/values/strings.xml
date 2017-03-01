@@ -1,0 +1,71 @@
+<resources>
+    <string name="app_name">Qinote</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="tags">标签</string>
+    <string name="action_favorites">收藏夹</string>
+    <string name="communicate">沟通</string>
+    <string name="action_send_feedback">反馈</string>
+    <string name="action_rate_us">喜欢我们</string>
+    <string name="exit_to_app">退出</string>
+
+    <string name="note_option_button">...</string>
+
+    <string name="action_delete_all_entries">删除所有笔记</string>
+    <string name="empty_view_title_text">It\'s a bit lonely here...</string>
+    <string name="empty_view_subtitle_text">Get started by adding a pet</string>
+    <string name="action_search">搜索</string>
+    <string name="action_settings">设置</string>
+    <string name="action_share">分享</string>
+
+    <string name="action_insert_image">插入图片</string>
+    <string name="add_picture">添加图片</string>
+    <string name="action_choose_image">选择图片</string>
+    <string name="action_take_photo">拍照</string>
+
+    <string name="action_mark_as_favorite">加入收藏夹</string>
+    <string name="action_remove_from_favorite">移出收藏夹</string>
+    <string name="action_archive">归档</string>
+    <string name="action_unarchive">取消归档</string>
+    <string name="action_delete">删除</string>
+    <string name="action_note_BG_color">背景颜色</string>
+    <string name="note_color">笔记颜色</string>
+    <string name="action_todo">待办事项</string>
+    <string name="undo">撤销</string>
+
+    <string name="hint_type_a_note">在此处输入文字...</string>
+    <string name="add_a_tag">添加标签</string>
+    <string name="tag_grocery">#购物</string>
+    <string name="tag_movies">#电影</string>
+    <string name="tag_receipts">#收据</string>
+    <string name="tag_restaurant">#餐厅</string>
+    <string name="tag_todo">#待办</string>
+    <string name="tag_personal">#私人</string>
+    <string name="tag_recipes">#食谱</string>
+    <string name="tag_travel">#旅行</string>
+    <string name="tag_misc">#Misc</string>
+    <string name="done">完成</string>
+    <string name="remove">清除</string>
+
+    <string name="about">关于</string>
+    <string name="version">版本</string>
+    <string name="contact_us">联系我们</string>
+    
+    <string name="Image_Deleted">图片已删除</string>
+    <string name="Note_Archined">笔记已归档</string>
+    <string name="Note_Unarchived">笔记已取消归档</string>
+    <string name="No_Notes_found">没有找到笔记</string>
+    <string name="editor_insert_note_successful">笔记已保存</string>
+    <string name="editor_insert_note_failed">保存笔记时出错</string>
+    <string name="editor_update_note_successful">笔记已更新</string>
+    <string name="editor_update_note_failed">更新笔记时出错</string>
+    <string name="editor_delete_note_successful">笔记已删除</string>
+    <string name="editor_delete_note_failed">删除笔记时出错</string>
+    <string name="delete_dialog_msg">确定删除这个笔记吗？</string>
+    <string name="delete">删除</string>
+    <string name="cancel">取消</string>
+
+    <string name="content_authority">com.example.qinote</string>
+</resources>

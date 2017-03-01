@@ -1,0 +1,55 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="EditorTheme" parent="AppTheme">
+        <item name="colorPrimary">@color/BlueGrey_500</item>
+        <item name="colorPrimaryDark">@color/BlueGrey_700</item>
+        <item name="colorAccent">@color/Red_A200</item>
+    </style>
+
+    <style name="BlueGreyTheme" parent="AppTheme.NoActionBar">
+        <item name="colorPrimary">@color/BlueGrey_500</item>
+        <item name="colorPrimaryDark">@color/BlueGrey_700</item>
+    </style>
+
+    <style name="BlueTheme" parent="AppTheme.NoActionBar">
+        <item name="colorPrimary">@color/Blue_500</item>
+        <item name="colorPrimaryDark">@color/Blue_700</item>
+    </style>
+
+    <style name="DeepOrangeTheme" parent="AppTheme.NoActionBar">
+        <item name="colorPrimary">@color/DeepOrange_500</item>
+        <item name="colorPrimaryDark">@color/DeepOrange_700</item>
+    </style>
+
+    <style name="AmberTheme" parent="AppTheme.NoActionBar">
+        <item name="colorPrimary">@color/Amber_500</item>
+        <item name="colorPrimaryDark">@color/Amber_700</item>
+    </style>
+
+    <style name="GreenTheme" parent="AppTheme.NoActionBar">
+        <item name="colorPrimary">@color/Green_500</item>
+        <item name="colorPrimaryDark">@color/Green_700</item>
+    </style>
+
+    <style name="TealTheme" parent="AppTheme.NoActionBar">
+        <item name="colorPrimary">@color/Teal_500</item>
+        <item name="colorPrimaryDark">@color/Teal_700</item>
+    </style>
+</resources>
