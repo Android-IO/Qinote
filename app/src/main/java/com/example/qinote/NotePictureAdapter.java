@@ -1,7 +1,9 @@
 package com.example.qinote;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Point;
+import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.Display;
 import android.view.LayoutInflater;
@@ -10,6 +12,7 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
@@ -33,6 +36,15 @@ public class NotePictureAdapter extends RecyclerView.Adapter<NotePictureAdapter.
         public NotePictureViewHolder(View view) {
             super(view);
             mNotePictureImageView = (ImageView) view.findViewById(R.id.note_photo_imageview);
+//            mNotePictureImageView.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    Intent intent1=new Intent(context,PictureViewerActivity.class);
+//                    context.startActivity(intent1);
+//                    Uri uri=EditorActivity.
+//                    Toast.makeText(context, "Click is worked", Toast.LENGTH_SHORT).show();
+//                }
+//            });
             mDeletePictureImageButton = (ImageButton) view.findViewById(R.id.delete_picture_imagebutton);
             view.setOnClickListener(this);
         }

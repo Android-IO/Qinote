@@ -9,7 +9,7 @@
     <uses-permission
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         android:maxSdkVersion="18" />
-    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:allowBackup="true"
@@ -27,28 +27,40 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".EditorActivity"
-            android:theme="@style/EditorTheme"
-            android:parentActivityName=".MainActivity">
+        <activity
+            android:name=".EditorActivity"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/EditorTheme">
+
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity"/>
+                android:value=".MainActivity" />
         </activity>
+
         <provider
-            android:authorities="com.example.qinote.fileprovider"
             android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.example.qinote.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/file_paths">
-            </meta-data>
+                android:resource="@xml/file_paths"></meta-data>
         </provider>
         <provider
-            android:authorities="@string/content_authority"
             android:name=".data.NoteProvider"
-            android:exported="false"/>
+            android:authorities="@string/content_authority"
+            android:exported="false" />
+
+        <activity
+            android:name=".PictureViewerActivity"
+            android:label="@string/title_activity_picture_viewer"
+            android:parentActivityName=".EditorActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.qinote.EditorActivity" />
+        </activity>
     </application>
 
 </manifest>

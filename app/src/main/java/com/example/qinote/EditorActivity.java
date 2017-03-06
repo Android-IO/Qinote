@@ -83,6 +83,9 @@ public class EditorActivity extends AppCompatActivity implements
 
     private ArrayList<String> mNotePhotoPath = new ArrayList<String>();
 
+    private String sPhotoPathArrayString;
+    private int sNoteImageCount;
+
     private int mColorPrimary = R.color.BlueGrey_500;
     private int mColorPrimaryDark = R.color.BlueGrey_700;
 
@@ -131,7 +134,7 @@ public class EditorActivity extends AppCompatActivity implements
 
         // Examine the intent that was used to launch this activity,
         // in order to figure out if we're creating a new note or editing an existing one.
-        Intent intent = getIntent();
+        final Intent intent = getIntent();
         mCurrentNoteUri = intent.getData();
 
         // If the intent DOES NOT contain a note content URI, then we know that we are
@@ -201,6 +204,20 @@ public class EditorActivity extends AppCompatActivity implements
         mPictureRecyclerView.setLayoutManager(mPictureLayoutManager);
         mPictureAdapter = new NotePictureAdapter(this, mNotePhotoPath);
         mPictureRecyclerView.setAdapter(mPictureAdapter);
+
+        // Setup the item click listener
+        ItemClickSupport.addTo(mPictureRecyclerView).setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
+            @Override
+            public void onItemClicked(RecyclerView recyclerView, int position, View v) {
+                // Create new intent to go to {@link PictureViewActivity}
+                Intent intent1=new Intent(EditorActivity.this,PictureViewerActivity.class);
+                intent1.putExtra("PhotoPath",sPhotoPathArrayString);
+                intent1.putExtra("ImageCount",sNoteImageCount);
+//                Log.d(LOG_TAG,"photoPathArrayString= "+photoPathArrayString);
+//                intent1.setData(mCurrentNoteUri);
+                startActivity(intent1);
+            }
+        });
     }
 
     private static final String[] TAGS = new String[]{
@@ -214,6 +231,7 @@ public class EditorActivity extends AppCompatActivity implements
         String tagString = mTagCompleteTextView.getText().toString();
         String typeNoteString = mTypeNoteEditText.getText().toString();
         mNoteImageCount = mNotePhotoPath.size();
+        sNoteImageCount=mNoteImageCount;
         // Check if this is supposed to be a new pet
         // and check if all the fields in the editor are blank
         if (mCurrentNoteUri == null && TextUtils.isEmpty(typeNoteString) && mNoteImageCount == 0) {
@@ -248,6 +266,7 @@ public class EditorActivity extends AppCompatActivity implements
         if (mNoteImageCount > 0) {
             Gson gson = new Gson();
             String picPathArrayString = gson.toJson(mNotePhotoPath);
+            sPhotoPathArrayString=picPathArrayString;
             values.put(NoteContract.NoteEntry.COLUMN_NOTE_IMAGE_PATH, picPathArrayString);
         }
 
@@ -422,6 +441,10 @@ public class EditorActivity extends AppCompatActivity implements
                 Uri picUri = data.getData();
                 mCurrentPhotoPath = getPicturePathFromUri(picUri);
                 mNotePhotoPath.add(mCurrentPhotoPath);
+                sNoteImageCount+=1;
+                Gson gson = new Gson();
+                String picPathArrayString = gson.toJson(mNotePhotoPath);
+                sPhotoPathArrayString=picPathArrayString;
                 mPictureAdapter.notifyDataSetChanged();
                 mNoteHasChanged = true;
             }
@@ -835,6 +858,8 @@ public class EditorActivity extends AppCompatActivity implements
             }
             Gson gson = new Gson();
             if (imageCount > 0) {
+                sPhotoPathArrayString=picPathArrayString;
+                sNoteImageCount=imageCount;
                 Type type = new TypeToken<ArrayList<String>>() {
                 }.getType();
                 ArrayList<String> noteImagePath = gson.fromJson(picPathArrayString, type);
