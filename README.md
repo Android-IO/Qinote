@@ -1,5 +1,5 @@
 # Qinote
-This is a imitation of Microsoft's "Parch" App interface developed Notepad App, currently supported language for Simplified Chinese.
+This is a imitation of Microsoft's "Parchi" App interface developed Notepad App, currently supported language for Simplified Chinese.
 
 ## App UI
 #### MainActivity & EditorActivity
@@ -7,7 +7,8 @@ This is a imitation of Microsoft's "Parch" App interface developed Notepad App, 
 ![EditorActivity](https://github.com/Android-IO/UI/blob/master/EditorActivity50%25.png)
 
 ## Pre-requisites
-Android SDK 21 or Higher Build Tools version 21.1.2 Android Support AppCompat 22.2.0 Android Support Annotations 22.2.0  Android Support Design 22.2.0 Android Support RecyclerView 22.2.0 Square Picasso 2.5.2 Google Gson 2.8.0
+Android SDK 21 or Higher Build Tools version 21.1.2 Android Support AppCompat 22.2.0 Android Support Annotations 22.2.0  Android Support Design 22.2.0 Android Support RecyclerView 22.2.0 Android Support ViewPager Square Picasso 2.5.2 Google Gson 2.8.0 [ItemClickSupport](https://gist.github.com/nesquena/231e356f372f214c4fe6)
+
 ## Getting Started
 This App uses the Gradle build system. To build this project, use the "gradlew build" command or use "Import Project" in Android Studio.
 
