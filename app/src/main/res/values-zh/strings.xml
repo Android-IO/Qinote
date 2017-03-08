@@ -13,7 +13,7 @@
 
     <string name="note_option_button">...</string>
 
-    <string name="action_delete_all_entries">删除所有笔记</string>
+    <string name="action_delete_all_notes">删除所有笔记</string>
     <string name="empty_view_title_text">It\'s a bit lonely here...</string>
     <string name="empty_view_subtitle_text">Get started by adding a pet</string>
     <string name="action_search">搜索</string>
@@ -45,7 +45,7 @@
     <string name="tag_personal">#私人</string>
     <string name="tag_recipes">#食谱</string>
     <string name="tag_travel">#旅行</string>
-    <string name="tag_misc">#Misc</string>
+    <string name="tag_misc">#其它</string>
     <string name="done">完成</string>
     <string name="remove">清除</string>
 
@@ -54,9 +54,9 @@
     <string name="contact_us">联系我们</string>
     
     <string name="Image_Deleted">图片已删除</string>
-    <string name="Note_Archined">笔记已归档</string>
+    <string name="Note_Archived">笔记已归档</string>
     <string name="Note_Unarchived">笔记已取消归档</string>
-    <string name="No_Notes_found">没有找到笔记</string>
+    <string name="No_Notes_Found">没有找到笔记</string>
     <string name="editor_insert_note_successful">笔记已保存</string>
     <string name="editor_insert_note_failed">保存笔记时出错</string>
     <string name="editor_update_note_successful">笔记已更新</string>
