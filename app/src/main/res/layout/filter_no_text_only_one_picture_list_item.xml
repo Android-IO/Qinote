@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:elevation="2dp">
+
+    <Button
+        android:id="@+id/filter_no_text_only_one_picture_option_button"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:gravity="center|bottom"
+        android:layout_weight="1"
+        android:textColor="#FFFFFF"
+        android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+        android:text="@string/note_option_button"/>
+    <ImageView
+        android:id="@+id/filter_no_text_only_one_picture_note_picture_imageview"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="4"/>
+</LinearLayout>

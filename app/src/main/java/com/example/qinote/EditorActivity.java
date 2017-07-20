@@ -213,6 +213,8 @@ public class EditorActivity extends AppCompatActivity implements
                 Intent intent1=new Intent(EditorActivity.this,PictureViewerActivity.class);
                 intent1.putExtra("PhotoPath",sPhotoPathArrayString);
                 intent1.putExtra("ImageCount",sNoteImageCount);
+                intent1.putExtra("CurrentPosition",position);
+                Log.d(LOG_TAG," final sPhotopathArrayString= "+sPhotoPathArrayString);
 //                Log.d(LOG_TAG,"photoPathArrayString= "+photoPathArrayString);
 //                intent1.setData(mCurrentNoteUri);
                 startActivity(intent1);
@@ -431,6 +433,11 @@ public class EditorActivity extends AppCompatActivity implements
             mCurrentPhotoPath = image.getAbsolutePath();
 //            Log.d(LOG_TAG, "mCurrentPhotoPath= " + mCurrentPhotoPath);
             mNotePhotoPath.add(mCurrentPhotoPath);
+            sNoteImageCount+=1;
+            Gson gson = new Gson();
+            String picPathArrayString = gson.toJson(mNotePhotoPath);
+            sPhotoPathArrayString=picPathArrayString;
+            Log.d(LOG_TAG,"sPhotopathArrayString= "+sPhotoPathArrayString);
             mPictureAdapter.notifyDataSetChanged();
             mNoteHasChanged = true;
         } else if (requestCode == REQUEST_PICK_PICTURE_FROM_GALLERY && resultCode == RESULT_OK) {

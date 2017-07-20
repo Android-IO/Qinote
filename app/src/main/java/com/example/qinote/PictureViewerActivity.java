@@ -1,6 +1,9 @@
 package com.example.qinote;
 
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.Point;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -12,29 +15,31 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Transformation;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
-public class PictureViewerActivity extends AppCompatActivity  {
+public class PictureViewerActivity extends AppCompatActivity {
 
     private static final String LOG_TAG = PictureViewerActivity.class.getSimpleName();
 
-    private Uri mCurrentNoteUri;
-
     private String mPicPathArrayString;
     private ArrayList<String> mNoteImagePath;
+    private int mCurrentImagePositon;
     /**
      * The number of pages (wizard steps) to show in this demo.
      */
@@ -63,7 +68,8 @@ public class PictureViewerActivity extends AppCompatActivity  {
 //        mCurrentNoteUri=intent.getData();
         Bundle extra = intent.getExtras();
         if (extra != null) {
-            NUM_PAGES=extra.getInt("ImageCount");
+            NUM_PAGES = extra.getInt("ImageCount");
+            mCurrentImagePositon = extra.getInt("CurrentPosition");
             mPicPathArrayString = extra.getString("PhotoPath");
             Gson gson = new Gson();
             Type type = new TypeToken<ArrayList<String>>() {
@@ -82,6 +88,7 @@ public class PictureViewerActivity extends AppCompatActivity  {
         // Set up the ViewPager with the PagerAdapter.
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mPagerAdapter);
+        mViewPager.setCurrentItem(mCurrentImagePositon);
 
     }
 
@@ -121,7 +128,7 @@ public class PictureViewerActivity extends AppCompatActivity  {
         if (id == R.id.action_settings) {
             return true;
         }
-        if (id==android.R.id.home){
+        if (id == android.R.id.home) {
 //            NavUtils.navigateUpFromSameTask(PictureViewerActivity.this);
             finish();
             return true;
@@ -138,7 +145,6 @@ public class PictureViewerActivity extends AppCompatActivity  {
          * The fragment argument representing the section number for this
          * fragment.
          */
-        private static final String ARG_SECTION_NUMBER = "section_number";
         public static final String ARG_IMAGE_PATH = "image_path";
 
         public ScreenSlidePageFragment() {
@@ -156,17 +162,49 @@ public class PictureViewerActivity extends AppCompatActivity  {
 //            fragment.setArguments(args);
 //            return fragment;
 //        }
-
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_picture_viewer, container, false);
             ImageView imageView = (ImageView) rootView.findViewById(R.id.note_picture_viewer);
             final String fileUriPrefix = "file://";
-            String mCurrentPicPath=getArguments().getString(ARG_IMAGE_PATH);
-            Picasso.with(getContext()).load(fileUriPrefix+mCurrentPicPath).into(imageView);
+            String mCurrentPicPath = getArguments().getString(ARG_IMAGE_PATH);
+            WindowManager manager = (WindowManager) getActivity().getSystemService(Context.WINDOW_SERVICE);
+            Display display = manager.getDefaultDisplay();
+            Point point = new Point();
+            display.getSize(point);
+            // Get the dimensions of the View
+            int targetW;
+            int targetH;
+            targetW = point.x * 5 / 5;
+            targetH = point.y * 4 / 5;
+            Transformation transformation = new CropTransformation();
+            Picasso.with(getContext()).load(fileUriPrefix + mCurrentPicPath).transform(new CropTransformation()).resize(targetW, targetH).into(imageView);
 //            ArrayList<String> imagePathArray=getArguments().getStringArrayList(ARG_IMAGE_PATH);
             return rootView;
+        }
+
+        public class CropTransformation implements Transformation {
+            @Override
+            public Bitmap transform(Bitmap source) {
+                WindowManager manager = (WindowManager) getContext().getSystemService(Context.WINDOW_SERVICE);
+                Display display = manager.getDefaultDisplay();
+                Point point = new Point();
+                display.getSize(point);
+                // Get the dimensions of the View
+                int targetW = point.x * 5 / 5;
+                int targetH = point.y * 4 / 5;
+                Bitmap result = Bitmap.createScaledBitmap(source, targetW, targetH, true);
+                if (result != source) {
+                    source.recycle();
+                }
+                return result;
+            }
+
+            @Override
+            public String key() {
+                return "square()";
+            }
         }
     }
 
@@ -184,10 +222,10 @@ public class PictureViewerActivity extends AppCompatActivity  {
         public Fragment getItem(int position) {
             // getItem is called to instantiate the fragment for the given page.
             // Return a PlaceholderFragment (defined as a static inner class below).
-            Fragment fragment=new ScreenSlidePageFragment();
-            Bundle args=new Bundle();
-            ArrayList<String> imagePathArray=mNoteImagePath;
-            args.putString(ScreenSlidePageFragment.ARG_IMAGE_PATH,imagePathArray.get(position));
+            Fragment fragment = new ScreenSlidePageFragment();
+            Bundle args = new Bundle();
+            ArrayList<String> imagePathArray = mNoteImagePath;
+            args.putString(ScreenSlidePageFragment.ARG_IMAGE_PATH, imagePathArray.get(position));
 //            args.putStringArrayList(ScreenSlidePageFragment.ARG_IMAGE_PATH,mNoteImagePath);
             fragment.setArguments(args);
             return fragment;
@@ -212,4 +250,6 @@ public class PictureViewerActivity extends AppCompatActivity  {
 //            return null;
 //        }
     }
+
+
 }

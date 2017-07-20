@@ -1,5 +1,13 @@
 package com.example.qinote;
 
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.Point;
+import android.view.Display;
+import android.view.WindowManager;
+
+import com.squareup.picasso.Transformation;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
@@ -8,6 +16,8 @@ import java.util.Calendar;
  */
 
 public class Utility {
+    private Context mContex;
+
     public static String getFriendlyDayString(){
         Calendar calendar=Calendar.getInstance();
         SimpleDateFormat simpleDateFormat=new SimpleDateFormat("dd");
@@ -22,6 +32,5 @@ public class Utility {
         String year=yearSimpleDateFormat.format(calendar.getTime());
         return month+"\n"+year;
     }
-
 
 }

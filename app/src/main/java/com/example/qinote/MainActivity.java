@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity
     private NoteAdapter mNoteAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
 
-    // For the forecast view we're showing only a small subset of the stored data.
+    // For the note view we're showing only a small subset of the stored data.
     // Specify the columns we need.
     private static final String[] NOTE_COLUMNS = {
             NoteContract.NoteEntry._ID,
@@ -120,6 +120,7 @@ public class MainActivity extends AppCompatActivity
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setItemIconTintList(null);
         navigationView.setNavigationItemSelectedListener(this);
 
         // Kick off the loader
@@ -153,6 +154,10 @@ public class MainActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            return true;
+        }else if (id==R.id.action_search){
+            Intent intent=new Intent(MainActivity.this,NoteFilterActivity.class);
+            startActivity(intent);
             return true;
         }
 
@@ -197,7 +202,7 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
-        // Update {@link NoteAdapter} with this new cursor containing updated pet data
+        // Update {@link NoteAdapter} with this new cursor containing updated note data
         mNoteAdapter.swapCursor(data);
     }
 

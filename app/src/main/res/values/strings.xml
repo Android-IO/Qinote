@@ -13,7 +13,7 @@
 
     <string name="note_option_button">...</string>
 
-    <string name="action_delete_all_Notes">Delete All Notes</string>
+    <string name="action_delete_all_notes">Delete All Notes</string>
     <string name="empty_view_title_text">It\'s a bit lonely here...</string>
     <string name="empty_view_subtitle_text">Get started by adding a pet</string>
     <string name="action_search">Search</string>
@@ -69,4 +69,8 @@
 
     <string name="content_authority">com.example.qinote</string>
     <string name="title_activity_picture_viewer">PictureViewerActivity</string>
+    
+    <!--Searchable Configuration-->
+    <string name="app_label">Qinote</string>
+    <string name="search_hint">Search notes</string>
 </resources>

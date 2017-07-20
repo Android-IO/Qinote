@@ -1,37 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <group android:checkableBehavior="single">
+    <group android:checkableBehavior="single"
+        android:id="@+id/group_main">
         <item
             android:id="@+id/nav_favorite"
-            android:icon="@drawable/ic_favorite_white_48dp"
+            android:icon="@drawable/ic_favorite_red_a700_48dp"
             android:title="@string/action_favorites" />
         <item
             android:id="@+id/nav_archive"
-            android:icon="@drawable/ic_done_white_48dp"
+            android:icon="@drawable/ic_archive_yellow_a700_48dp"
             android:title="@string/action_archive" />
     </group>
 
-    <item android:title="@string/communicate">
-        <menu>
-            <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_share_white_48dp"
-                android:title="@string/action_share" />
-            <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_feedback_white_48dp"
-                android:title="@string/action_send_feedback" />
-            <item
-                android:id="@+id/nav_settings"
-                android:icon="@drawable/ic_settings_white_48dp"
-                android:title="@string/action_settings"/>
-            <item
-                android:id="@+id/nav_exit_to_app"
-                android:icon="@drawable/ic_exit_to_app_white_48dp"
-                android:title="@string/exit_to_app"/>
-        </menu>
-    </item>
+    <group android:checkableBehavior="single"
+        android:id="@+id/group_misc">
+        <item
+            android:id="@+id/nav_share"
+            android:icon="@drawable/ic_share_blue_a700_48dp"
+            android:title="@string/action_share" />
+        <item
+            android:id="@+id/nav_send"
+            android:icon="@drawable/ic_feedback_lime_a700_48dp"
+            android:title="@string/action_send_feedback" />
+        <item
+            android:id="@+id/nav_settings"
+            android:icon="@drawable/ic_settings_amber_a700_48dp"
+            android:title="@string/action_settings" />
+        <item
+            android:id="@+id/nav_exit_to_app"
+            android:icon="@drawable/ic_exit_to_app_cyan_a700_48dp"
+            android:title="@string/exit_to_app" />
+    </group>
 
 </menu>
